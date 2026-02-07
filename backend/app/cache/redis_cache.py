@@ -3,7 +3,8 @@ import os
 import requests
 import redis
 
-r = redis.Redis(host='localhost', port=6379, decode_responses=True)
+REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379/0")
+r = redis.Redis.from_url(REDIS_URL, decode_responses=True)
 
 # Default Time To Live (data persists for 7 days)
 DEFAULT_TTL = 60 * 60 * 24 * 7
