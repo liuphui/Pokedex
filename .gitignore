@@ -1,2 +1,5 @@
 # virtual environments
 backend/venv
+
+# pycache
+__pycache__
