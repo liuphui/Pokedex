@@ -1,8 +1,8 @@
 export interface Pokemon {
-    id: number,
-    name: string
-    types: string[]
-    sprite: string | null
+    id: number;
+    name: string;
+    types: string[];
+    sprite: string;
 }
 
 export async function getPokemon(name: string): Promise<Pokemon>{
