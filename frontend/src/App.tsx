@@ -1,28 +1,31 @@
-import { useEffect, useState } from 'react' 
+import { useState } from 'react'
 import { getPokemon, type Pokemon } from "./api/pokemon";
 
 function App() {
   const [pokemon, setPokemon] = useState<Pokemon | null>(null);
+  const [query, setQuery] = useState("");
 
-  useEffect(() => {
-    async function loadPokemon() {
-      const data = await getPokemon("pikachu")
-      setPokemon(data)
-    }
+  async function handleSearch() {
+    const data = await getPokemon(query)
+    setPokemon(data)
+  }
 
-    loadPokemon();
-  }, []);
-
-  return(
+  return (
     <div>
       <h1>Pokedex</h1>
+      <input
+        type="text"
+        placeholder="Enter Pokemon name..."
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+      />
+      <button onClick={handleSearch}>Submit</button>
       {pokemon ? (
         <div>
-          <h2>{pokemon.name}</h2>
           <img src={pokemon.sprite ?? ""} alt={pokemon.name}></img>
         </div>
       ) : (
-        <p>Loading...</p>
+        <p>No Pokemon name entered</p>
       )}
     </div>
   );
