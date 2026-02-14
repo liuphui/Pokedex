@@ -3,6 +3,14 @@ export interface Pokemon {
     name: string;
     types: string[];
     sprite: string;
+    stats: {
+        "hp": number;
+        "attack": number;
+        "defense": number;
+        "special-attack": number;
+        "special-defense": number;
+        "speed": number;
+    };
 }
 
 export async function getPokemon(name: string): Promise<Pokemon>{

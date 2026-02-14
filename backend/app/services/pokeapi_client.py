@@ -10,5 +10,9 @@ def get_pokemon(name_or_id):
         "id": data["id"],
         "name": data["name"],
         "types": [t["type"]["name"] for t in data["types"]],
-        "sprite": data["sprites"]["front_default"]
+        "sprite": data["sprites"]["front_default"],
+        "stats": {
+            t["stat"]["name"]: t["base_stat"] 
+            for t in data["stats"]
+        }
     }
