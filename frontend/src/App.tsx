@@ -14,17 +14,41 @@ function App() {
 
   return (
     <div>
-      <h1>Pokedex</h1>
-      <input
-        type="text"
-        placeholder="Enter Pokemon name..."
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
-      <button onClick={handleSearch}>Submit</button>
-      {pokemon ? (
-        <div>
-          <img src={pokemon.sprite ?? ""} alt={pokemon.name}></img>
+
+      <div className="">
+        <h1>Pokédex</h1>
+      </div>
+
+      <div className="">
+        <input
+          type="text"
+          placeholder="Enter Pokémon name..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+        <button onClick={handleSearch}>Submit</button>
+      </div>
+
+      <div className="relative w-full max-w-md">
+        {/* Base pokedex image */}
+        <img
+          src="/pokedex.png"
+          alt="pokedex-img"
+          className="w-full h-auto block"
+        />
+
+        {/* Screen area (fixed zone) */}
+        <div className="absolute top-[13%] left-[5%] w-[45%] h-[32%] flex items-center justify-center">
+          {pokemon && (
+            <img
+              src={pokemon.sprite ?? ""}
+              alt={pokemon.name}
+              className="max-w-full max-h-full object-contain"
+            />
+          )}
+        </div>
+
+        {pokemon && (
           <div className="font-medium">
             <div>HP: {pokemon.stats["hp"]}</div>
             <div>Attack: {pokemon.stats["attack"]}</div>
@@ -34,10 +58,10 @@ function App() {
             <div>Speed: {pokemon.stats["speed"]}</div>
             <div>Total Base Stats: {calculateTotalStats(pokemon)}</div>
           </div>
-        </div>
-      ) : (
-        <p>No Pokemon name entered</p>
-      )}
+        )}
+      </div>
+
+      {!pokemon && <p>No Pokémon name entered</p>}
     </div>
   );
 }
