@@ -10,6 +10,10 @@ Run the backend and redis:
 `docker compose up -d --build`
 
 Run the frontend:
+`cd frontend`
+
+Then
+
 `npm run dev`
 
 ## For Development
