@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { getPokemon, type Pokemon } from "./api/pokemon";
 import { calculateTotalStats } from './utils/stats';
+import PokeBallBackground from "./components/PokeBallBackground";
 
 function App() {
   const [pokemon, setPokemon] = useState<Pokemon | null>(null);
@@ -13,6 +14,7 @@ function App() {
 
   return (
     <div className="w-screen">
+      <PokeBallBackground></PokeBallBackground>
       <div className="w-full overflow-x-hidden">
         <header className="m-0 bg-red-400 text-white text-xl font-bold px-6 py-6">
           <div className="flex justify-between w-auto h-16">
@@ -36,7 +38,7 @@ function App() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
-            <button onClick={handleSearch}>Submit</button>
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xs" onClick={handleSearch}>Submit</button>
           </div>
           {!pokemon && <p>No Pokémon name entered</p>}
         </div>
