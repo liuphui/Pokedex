@@ -21,7 +21,7 @@ function App() {
             <img
               src="pokedex_header.png"
             />
-            <img 
+            <img
               src="ash_pikachu_walking.gif"
             />
           </div>
@@ -42,38 +42,38 @@ function App() {
           </div>
           {!pokemon && <p>No Pokémon name entered</p>}
         </div>
-      </div>
 
-      <div className="relative w-full max-w-md">
-        {/* Base pokedex image */}
-        <img
-          src="/pokedex.png"
-          alt="pokedex-img"
-          className="w-full h-auto block"
-        />
+        <div className="relative w-full max-w-md mx-auto">
+          {/* Base pokedex image */}
+          <img
+            src="/pokedex.png"
+            alt="pokedex-img"
+            className="w-full h-auto block"
+          />
 
-        {/* Screen area (fixed zone) */}
-        <div className="absolute top-[13%] left-[5%] w-[45%] h-[32%] flex items-center justify-center">
+          {/* Screen area (fixed zone) */}
+          <div className="absolute top-[13%] left-[5%] w-[45%] h-[32%] flex items-center justify-center overflow-hidden">
+            {pokemon && (
+              <img
+                src={pokemon.sprite ?? ""}
+                alt={pokemon.name}
+                className="max-w-full max-h-full object-contain"
+              />
+            )}
+          </div>
+
           {pokemon && (
-            <img
-              src={pokemon.sprite ?? ""}
-              alt={pokemon.name}
-              className="max-w-full max-h-full object-contain"
-            />
+            <div className="font-medium">
+              <div>HP: {pokemon.stats["hp"]}</div>
+              <div>Attack: {pokemon.stats["attack"]}</div>
+              <div>Defense: {pokemon.stats["defense"]}</div>
+              <div>SpAtk: {pokemon.stats["special-attack"]}</div>
+              <div>SpDef: {pokemon.stats["special-defense"]}</div>
+              <div>Speed: {pokemon.stats["speed"]}</div>
+              <div>Total Base Stats: {calculateTotalStats(pokemon)}</div>
+            </div>
           )}
         </div>
-
-        {pokemon && (
-          <div className="font-medium">
-            <div>HP: {pokemon.stats["hp"]}</div>
-            <div>Attack: {pokemon.stats["attack"]}</div>
-            <div>Defense: {pokemon.stats["defense"]}</div>
-            <div>SpAtk: {pokemon.stats["special-attack"]}</div>
-            <div>SpDef: {pokemon.stats["special-defense"]}</div>
-            <div>Speed: {pokemon.stats["speed"]}</div>
-            <div>Total Base Stats: {calculateTotalStats(pokemon)}</div>
-          </div>
-        )}
       </div>
     </div>
   );
