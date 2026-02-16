@@ -4,3 +4,19 @@ html, body, #root {
   margin: 0;
   padding: 0;
 }
+
+/* --- Background animations --- */
+@keyframes poke-float {
+  0%, 100% { transform: translateY(0px); }
+  50%      { transform: translateY(-18px); }
+}
+
+@keyframes poke-drift {
+  0%   { transform: translateX(-6vw); }
+  100% { transform: translateX(6vw); }
+}
+
+@keyframes poke-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
