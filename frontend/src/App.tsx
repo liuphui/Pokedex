@@ -8,8 +8,12 @@ function App() {
   const [query, setQuery] = useState("");
 
   async function handleSearch() {
-    const data = await getPokemon(query)
-    setPokemon(data)
+    try {
+      const data = await getPokemon(query);
+      setPokemon(data);
+    } catch (error) {
+      console.error("Pokemon not found");
+    }
   }
 
   return (
@@ -64,12 +68,12 @@ function App() {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg p-3 border-2 border-orange-300 w-full max-w-xl">
-          <div className="text-l font-semibold">
-            <h4 className="mb-4">Base Stats</h4>
+        {pokemon && (
+          <div className="bg-white rounded-lg p-3 border-2 border-orange-300 w-full max-w-xl">
+            <div className="text-l font-semibold">
+              <h4 className="mb-4">Base Stats</h4>
 
-            {pokemon &&
-              Object.entries(pokemon.stats).map(([key, value]) => (
+              {Object.entries(pokemon.stats).map(([key, value]) => (
                 <div key={key} className="flex items-center gap-3">
                   <div className="w-full mb-3">
                     <div className="flex justify-between">
@@ -85,10 +89,10 @@ function App() {
                     </div>
                   </div>
                 </div>
-              ))
-            }
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
