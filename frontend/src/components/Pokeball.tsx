@@ -1,8 +1,8 @@
-interface PokballProps {
+interface PokeballProps {
   className?: string;
 }
 
-export default function Pokeball({ className = "" }: PokballProps) {
+export default function Pokeball({ className = "" }: PokeballProps) {
   return (
     <div className={`relative h-44 w-44 rounded-full animate-float ${className}`}>
       <div className="absolute inset-0 rounded-full animate-slowspin">
