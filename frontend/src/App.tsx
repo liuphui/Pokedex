@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { getPokemon, type Pokemon } from "./api/pokemon";
 import { calculateTotalStats, formatStatName } from './utils/stats';
-import PokeBallBackground from "./components/PokeBallBackground";
+import PokeBallBackground from "./components/PokeballBackground";
 
 function App() {
   const [pokemon, setPokemon] = useState<Pokemon | null>(null);
