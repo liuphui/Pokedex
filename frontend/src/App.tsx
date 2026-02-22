@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { getPokemon, type Pokemon } from "./api/pokemon";
 import { calculateTotalStats, formatStatName } from './utils/stats';
-import PokeBallBackground from "./components/PokeballBackground";
+import PokeballBackground from "./components/PokeballBackground";
 
 function App() {
   const [pokemon, setPokemon] = useState<Pokemon | null>(null);
@@ -18,7 +18,7 @@ function App() {
 
   return (
     <div className="w-screen">
-      <PokeBallBackground></PokeBallBackground>
+      <PokeballBackground></PokeballBackground>
 
       <div className="w-full overflow-x-hidden">
         <header className="m-0 bg-red-400 text-white text-xl font-bold px-6 py-6">
