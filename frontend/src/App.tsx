@@ -90,6 +90,7 @@ function App() {
                   </div>
                 </div>
               ))}
+              <span>Total Base Stats: {calculateTotalStats(pokemon)}</span>
             </div>
           </div>
         )}
